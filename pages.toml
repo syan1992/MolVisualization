@@ -1,0 +1,9 @@
+[[pages]]
+path = "PropertyAnalysis.py"
+name = "Datasets Analysis"
+icon = ":bookmark_tabs:"
+
+[[pages]]
+path = "MolVisualization.py"
+name = "Molcule Visualization"
+icon = ":eye-in-speech-bubble:"
