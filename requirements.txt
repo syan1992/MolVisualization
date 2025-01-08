@@ -10,5 +10,4 @@ streamlit==1.40.2
 webdriver_manager==4.0.2
 numpy==1.25.0
 rdkit==2024.3.6
-st_aggrid
-
+streamlit-aggrid==1.0.5
