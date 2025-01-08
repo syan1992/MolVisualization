@@ -6,7 +6,7 @@ import py3Dmol
 import io
 
 # 页面标题
-st.title("Molecule Visualization")
+#st.title("Molecule Visualization")
 
 # SMILES 输入框
 smiles_input = st.text_input("Enter SMILES String", "CCO")  # 默认输入乙醇 (ethanol)
