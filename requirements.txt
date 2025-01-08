@@ -9,3 +9,6 @@ selenium==4.24.0
 st_pages==1.0.1
 streamlit==1.40.2
 webdriver_manager==4.0.2
+numpy==1.25.0
+rdkit==2024.3.6
+
