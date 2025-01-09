@@ -22,7 +22,10 @@ if smiles_input:
         # 检查分子是否有效
         if mol:
             # 将输入的原子序号转换为整数列表
-            atom_indices = list(map(int, atom_indices_input.split(',')))
+            if atom_indices_input:
+                atom_indices = list(map(int, atom_indices_input.split(',')))
+            else:
+                atom_indices = []
 
             # 创建两个列
             col1, col2 = st.columns(2)
