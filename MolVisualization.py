@@ -32,8 +32,11 @@ if smiles_input:
                 st.subheader("2D Visualization")
                 # 为 2D 图高亮原子
                 Chem.AllChem.Compute2DCoords(mol)  # 生成 2D 坐标
-                img = Draw.MolToImage(mol, size=(300, 300), highlightAtoms=atom_indices)  # 高亮指定原子
 
+                if len(atom_indices) > 0:
+                    img = Draw.MolToImage(mol, size=(300, 300), highlightAtoms=atom_indices)  # 高亮指定原子
+                else:
+                    img = Draw.MolToImage(mol, size=(300, 300))
                 # 将图像保存到 BytesIO
                 img_buffer = io.BytesIO()
                 img.save(img_buffer, format="PNG")
