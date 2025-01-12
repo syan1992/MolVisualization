@@ -110,12 +110,27 @@ if smiles_input_1 and smiles_input_2:
             # 比较立体化学是否相同
             are_equal_stereo = smiles1_canonical == smiles2_canonical
 
-            st.text(f"Are the two molecular graphs equal? {'Yes' if are_equal_graph else 'No'}")
-            st.text(f"Are the two molecules stereochemically identical? {'Yes' if are_equal_stereo else 'No'}")
+            # 使用 Markdown 优化显示
+            st.markdown("### Similarity Results")
+            st.markdown(
+                f"""
+                | Comparison                        | Result              |
+                |-----------------------------------|---------------------|
+                | Molecular graphs identical?      | {'**Yes**' if are_equal_graph else '**No**'} |
+                | Stereochemically identical?      | {'**Yes**' if are_equal_stereo else '**No**'} |
+                """
+            )
 
             # 显示规范化的 SMILES
-            st.text(f"Canonical SMILES for Molecule 1: {smiles1_canonical}")
-            st.text(f"Canonical SMILES for Molecule 2: {smiles2_canonical}")
+            st.markdown("### Canonical SMILES")
+            st.markdown(
+                f"""
+                | Molecule   | Canonical SMILES                       |
+                |------------|----------------------------------------|
+                | Molecule 1 | `{smiles1_canonical}`                 |
+                | Molecule 2 | `{smiles2_canonical}`                 |
+                """
+            )
         else:
             st.error("One or both SMILES strings are invalid.")
     except Exception as e:
