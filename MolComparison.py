@@ -81,13 +81,28 @@ def visualize_molecule(smiles_input, atom_indices_input, col):
 # 左侧分子
 with col_left:
     st.subheader("Molecule 1")
-    smiles_input_1 = st.text_input("Enter SMILES String for Molecule 1", "CCO")  # 默认输入乙醇
+    smiles_input_1 = st.text_input("Enter SMILES String for Molecule 1", "CC(=O)Oc1ccccc1C(O)=O")  # 默认输入乙醇
     atom_indices_input_1 = st.text_input("Enter list of atom indices to highlight for Molecule 1", "0,1,2")
     visualize_molecule(smiles_input_1, atom_indices_input_1, col_left)
 
 # 右侧分子
 with col_right:
     st.subheader("Molecule 2")
-    smiles_input_2 = st.text_input("Enter SMILES String for Molecule 2", "C1CCCCC1")  # 默认输入环己烷
+    smiles_input_2 = st.text_input("Enter SMILES String for Molecule 2", "C1=CC=CC(=C1C(O)=O)OC(C)=O")  # 默认输入环己烷
     atom_indices_input_2 = st.text_input("Enter list of atom indices to highlight for Molecule 2", "0,1")
     visualize_molecule(smiles_input_2, atom_indices_input_2, col_right)
+
+st.subheader("Molecule Similarity Check")
+if smiles_input_1 and smiles_input_2:
+    try:
+        mol1 = Chem.MolFromSmiles(smiles_input_1)
+        mol2 = Chem.MolFromSmiles(smiles_input_2)
+
+        if mol1 and mol2:
+            # 比较分子图是否相同
+            are_equal = Chem.MolToSmiles(mol1) == Chem.MolToSmiles(mol2)
+            st.text(f"Are the two molecular graphs equal? {'Yes' if are_equal else 'No'}")
+        else:
+            st.error("One or both SMILES strings are invalid.")
+    except Exception as e:
+        st.error(f"Error occurred while comparing molecules: {e}")
