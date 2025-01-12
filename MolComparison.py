@@ -92,16 +92,30 @@ with col_right:
     atom_indices_input_2 = st.text_input("Enter list of atom indices to highlight for Molecule 2", "0,1")
     visualize_molecule(smiles_input_2, atom_indices_input_2, col_right)
 
-st.subheader("Molecule Similarity Check")
+# 分子相似性和立体化学比较
+st.subheader("Molecule Similarity and Stereochemistry Check")
 if smiles_input_1 and smiles_input_2:
     try:
         mol1 = Chem.MolFromSmiles(smiles_input_1)
         mol2 = Chem.MolFromSmiles(smiles_input_2)
 
         if mol1 and mol2:
+            # 标准化 SMILES 表示
+            smiles1_canonical = Chem.MolToSmiles(mol1, isomericSmiles=True)
+            smiles2_canonical = Chem.MolToSmiles(mol2, isomericSmiles=True)
+
             # 比较分子图是否相同
-            are_equal = Chem.MolToSmiles(mol1) == Chem.MolToSmiles(mol2)
-            st.text(f"Are the two molecular graphs equal? {'Yes' if are_equal else 'No'}")
+            are_equal_graph = Chem.MolToSmiles(mol1) == Chem.MolToSmiles(mol2)
+
+            # 比较立体化学是否相同
+            are_equal_stereo = smiles1_canonical == smiles2_canonical
+
+            st.text(f"Are the two molecular graphs equal? {'Yes' if are_equal_graph else 'No'}")
+            st.text(f"Are the two molecules stereochemically identical? {'Yes' if are_equal_stereo else 'No'}")
+
+            # 显示规范化的 SMILES
+            st.text(f"Canonical SMILES for Molecule 1: {smiles1_canonical}")
+            st.text(f"Canonical SMILES for Molecule 2: {smiles2_canonical}")
         else:
             st.error("One or both SMILES strings are invalid.")
     except Exception as e:
