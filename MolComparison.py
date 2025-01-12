@@ -49,14 +49,6 @@ def visualize_molecule(smiles_input, atom_indices_input, col):
 
                         st.image(img)
 
-                        # 提供下载按钮
-                        st.download_button(
-                            label="Download 2D Image",
-                            data=img_buffer,
-                            file_name="molecule_2d.png",
-                            mime="image/png",
-                        )
-
                     # **3D 可视化**
                     with col_3d:
                         st.subheader("3D Visualization")
