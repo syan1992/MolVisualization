@@ -7,3 +7,8 @@ icon = ":bookmark_tabs:"
 path = "MolVisualization.py"
 name = "Molcule Visualization"
 icon = ":eye-in-speech-bubble:"
+
+[[pages]]
+path = "MolComparison.py"
+name = "Molcule Comparison"
+icon = ":eye-in-speech-bubble:"
