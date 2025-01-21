@@ -10,7 +10,7 @@ dataset_folder = "Datasets"  # 替换为你的数据集所在文件夹路径
 
 # 获取数据集名称列表
 dataset_files = [
-    'BACE', 'BBBP', 'CLINTOX', 'ESOL', 'Freesolv', 'HIV', 'Lipophilicity', 'Sider', 'Tox21'
+    'BACE', 'BBBP', 'CLINTOX', 'ESOL', 'Freesolv', 'HIV', 'Lipophilicity', 'Sider', 'Tox21', 'PIN1'
 ]
 # 页面布局
 col1, col2 = st.columns([1, 3])  # 左1/右3比例分割
@@ -78,6 +78,7 @@ with col2:
                 "Sider": data.columns[1:28].tolist(),
                 "Tox21": data.columns[:12].tolist(),
                 "HIV": ["HIV_active"],
+                'PIN1': data.columns[2:6].tolist()
             }
 
             regression_columns = {
