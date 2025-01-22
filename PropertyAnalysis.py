@@ -78,13 +78,13 @@ with col2:
                 "Sider": data.columns[1:28].tolist(),
                 "Tox21": data.columns[:12].tolist(),
                 "HIV": ["HIV_active"],
-                'PIN1': data.columns[2:6].tolist()
             }
 
             regression_columns = {
                 "Lipophilicity": ['exp'],
                 "ESOL": ['ESOL predicted log solubility in mols per litre'],
-                "Freesolv": ['expt']
+                "Freesolv": ['expt'],
+                "PIN1": ['Potency', 'Efficacy', 'P_E']
             }
 
             if selected_dataset in classification_columns:

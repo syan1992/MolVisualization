@@ -12,3 +12,8 @@ icon = ":eye-in-speech-bubble:"
 path = "MolComparison.py"
 name = "Molcule Comparison"
 icon = ":eye-in-speech-bubble:"
+
+[[pages]]
+path = "PDBVisualization.py"
+name = "PDB Visualization"
+icon = ":eye-in-speech-bubble:"

@@ -10,7 +10,6 @@ import io
 
 # SMILES 输入框
 smiles_input = st.text_input("Enter SMILES String", "CCO")  # 默认输入乙醇 (ethanol)
-
 # 原子序号输入框
 atom_indices_input = st.text_input("Enter list of atom indices to highlight (comma-separated)", "0,1,2")  # 默认输入0,1,2
 
