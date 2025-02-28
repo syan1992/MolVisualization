@@ -1,6 +1,6 @@
 import streamlit as st
 from rdkit import Chem
-from rdkit.Chem import Draw, AllChem, DataStructs
+from rdkit.Chem import Draw, AllChem, DataStructs, rdMolDescriptors
 import py3Dmol
 import io
 
@@ -86,6 +86,11 @@ if smiles_input_1 and smiles_input_2:
             fp2 = AllChem.GetMorganFingerprintAsBitVect(mol2, 2, nBits=2048)
             tanimoto_sim = DataStructs.FingerprintSimilarity(fp1, fp2)
 
+            # 计算基于 BRICS 的分子相似性
+            fp1_brics = rdMolDescriptors.GetHashedBRICSFingerprint(mol1)
+            fp2_brics = rdMolDescriptors.GetHashedBRICSFingerprint(mol2)
+            brics_sim = DataStructs.DiceSimilarity(fp1_brics, fp2_brics)
+
             st.markdown("### Similarity Results")
             st.markdown(
                 f"""
@@ -94,6 +99,7 @@ if smiles_input_1 and smiles_input_2:
                 | Molecular graphs identical?      | {'**Yes**' if are_equal_graph else '**No**'} |
                 | Stereochemically identical?      | {'**Yes**' if are_equal_stereo else '**No**'} |
                 | Tanimoto Similarity (0-1)       | **{tanimoto_sim:.4f}** |
+                | BRICS Similarity (Dice) (0-1)   | **{brics_sim:.4f}** |
                 """
             )
 
