@@ -25,6 +25,7 @@ def visualize_molecule(smiles_input, atom_indices_input, col):
                     # **2D 可视化**
                     with col_2d:
                         st.subheader("2D Visualization")
+                        mol = Chem.AddHs(mol)
                         Chem.AllChem.Compute2DCoords(mol)
                         img = Draw.MolToImage(mol, size=(300, 300), highlightAtoms=atom_indices)
                         img_buffer = io.BytesIO()
